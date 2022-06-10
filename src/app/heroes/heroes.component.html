@@ -1,7 +1,17 @@
 <!-- <h1>{{value | currency}}</h1> -->
+
+<h2>Hero List</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+        <span class="badge">{{hero.id}}</span>
+        <span class="name">{{hero.name}}</span> 
+    </li>
+</ul>
+
+<!-- 
 <h1>{{hero.name | uppercase}} Details</h1>
 <div><span>id: </span>{{hero.id}}</div>
 <div>
     <label for="">Hero Name</label>
-    <input type="text" [(ngModel)] ='hero.name'>
-</div>
+    <input type="text" [(ngModel)]='hero.name'>
+</div> -->
