@@ -12,7 +12,11 @@ export class HeroDetailComponent implements OnInit {
 
   constructor() { }
 
+  // what is going on?
+  
+
   ngOnInit(): void {
+  
   }
 
 }
