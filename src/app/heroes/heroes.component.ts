@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Hero} from '../hero';
-import { HEROES } from '../mock-heroes';
-import { HeroService } from '../hero.service'; 
+import { Hero } from '../hero';
+// import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
 
 
@@ -16,7 +16,7 @@ export class HeroesComponent implements OnInit {
   // heroes = HEROES;
 
   heroes: Hero[] = [];
-  selectedHero?: Hero;  
+  selectedHero?: Hero;
 
   constructor(private heroService: HeroService, private messageService: MessageService) { }
 
@@ -25,18 +25,12 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  getHeroes(): void{
+  getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(x => {
         console.log(x);
         this.heroes = x;
       })
-  }
-
-  onSelect (hero: Hero) : void{
-    console.log(hero);
-    this.selectedHero = hero;
-    this.messageService.add(`You selected the Hero with the id of ${hero.id} and name ${hero.name}`);
   }
 
   add(name: string): void {
@@ -48,4 +42,17 @@ export class HeroesComponent implements OnInit {
       });
   }
 
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
+
+  onSelect(hero: Hero): void {
+    console.log(hero);
+    this.selectedHero = hero;
+    this.messageService.add(`You selected the Hero with the id of ${hero.id} and name ${hero.name}`);
+  }
+
 }
+
+//! ---------------------------------------- *
